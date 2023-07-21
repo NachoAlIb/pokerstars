@@ -1,17 +1,27 @@
-# This is a sample Python script.
-
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from deck.dealer import *
+from deck.pokersetuppreflopoutput import PokerSetupPreFlopOutput
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def play_poker():
 
+    playing_deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
+    shuffle_deck = playing_deck
+    shuffle_deck = get_shuffle_deck(shuffle_deck)
 
-# Press the green button in the gutter to run the script.
+    chispi_hand = deal_cards_player(shuffle_deck)
+
+    pre_flop = deal_pre_flop(shuffle_deck)
+
+    output = PokerSetupPreFlopOutput()
+    output.cards_on_deck = shuffle_deck
+    output.cards_on_hand = chispi_hand
+    output.pre_flop = pre_flop
+
+    print(output.cards_on_hand)
+    print(output.pre_flop)
+    print(output.cards_on_deck)
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    play_poker()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
